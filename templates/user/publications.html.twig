@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <h2>Mes publications en cours</h2>
+    {% for ad in app.user.publications %}
+        {% include('inc/ad_card.html.twig') %}
+    {% else %}
+        Aucune publication !
+    {% endfor %}
+{% endblock %}
+
+{% block title %}Mes annonces{% endblock %}
+

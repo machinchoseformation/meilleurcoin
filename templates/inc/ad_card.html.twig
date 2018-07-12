@@ -1,0 +1,14 @@
+<div class="col-sm-4 mb-3">
+    <article class="card">
+        <div class="card-body">
+            <h4 class="card-title">{{ ad.title }} <span class="badge badge-info">{{ ad.price }}&euro;</span></h4>
+            {% for pic in ad.pictures %}
+                <img class="card-img-top" src="{{ asset('uploads/'~pic.filename) }}">
+            {% endfor %}
+            <p class="card-text">{{ ad.city }} ({{ ad.zip }})</p>
+            <a class="float-right btn btn-primary" href="{{ path("ad_detail", {"id": ad.id}) }}" title="Voir l'annonce">Détails</a>
+            <p>Classée dans : {{ ad.category.name }}</p>
+            <p>Créée par {{ ad.creator.username}} le {{ ad.dateCreated|date('d-m-Y') }}</p>
+        </div>
+    </article>
+</div>

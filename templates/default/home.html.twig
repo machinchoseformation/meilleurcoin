@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <section class="ads">
+        <h2>Nos dernières annonces</h2>
+
+        <div class="row">
+        {% for ad in ads %}
+            {% include('inc/ad_card.html.twig') %}
+        {% else %}
+            Pas d'annonces!
+        {% endfor %}
+        </div>
+    </section>
+{% endblock %}
+
+{# parent() réécrit le contenu du bloc qu'on surcharge #}
+{% block title %}{{ parent() }} | Bienvenue !{% endblock %}

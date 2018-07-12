@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <h2>Mes favoris</h2>
+
+    {% for ad in app.user.favorites %}
+        {% include('inc/ad_card.html.twig') %}
+    {% else %}
+        Aucun favori !
+    {% endfor %}
+{% endblock %}
+
+{% block title %}Mes favoris{% endblock %}
+

@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+<article class="row">
+    <div class="col-md-6">
+        {% for pic in ad.pictures %}
+            <img src="{{ asset('uploads/'~pic.filename) }}">
+        {% endfor %}
+    </div>
+    <div class="col-md-6">
+        <h2>{{ ad.title }}</h2>
+        <div>{{ ad.description|nl2br }}</div>
+        <div>{{ ad.price }} &euro;</div>
+        <div>Située à {{ ad.city }} ({{ ad.zip }})</div>
+        <div>Créée par <em>{{ ad.creator.username }}</em> le {{ ad.dateCreated|date("d-m-Y") }}</div>
+        {% if app.user %}
+            {% if app.user.favorites.contains(ad) %}
+                <a href="{{ path('remove_favorite', {'id': ad.id}) }}" class="btn btn-warning">Retirer des favoris !</a>
+            {% else %}
+                <a href="{{ path('add_favorite', {'id': ad.id}) }}" class="btn btn-success">Ajouter au favoris !</a>
+            {% endif %}
+
+            {% if app.user == ad.creator %}
+                <a href="{{ path('ad_delete', {'id':ad.id}) }}" class="btn btn-warning">Supprimer l'annonce</a>
+            {% endif %}
+        {% endif %}
+    </div>
+</article>
+{% endblock %}
+
+{% block title %}{{ ad.title }} | {{ parent() }}{% endblock %}

@@ -1,0 +1,62 @@
+html {
+    overflow-y: scroll;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1 {
+    color: #7383BF;
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+a {
+    color: #43B05C;
+}
+
+a:hover {
+    color: #EBBA16;
+    text-decoration: none;
+}
+
+a.active {
+    color: #EBBA16;
+}
+
+.main-logo {
+    width: 49px;
+    position: relative;
+    top: -6px;
+    margin-right: 10px;
+}
+
+header {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #EBBA16;
+}
+
+.lead {
+    position: relative;
+    top: -16px;
+    left: 62px;
+}
+
+footer {
+    margin-top: 50px;
+    border-top: 1px solid #EBBA16;
+    padding: 15px;
+}
+
+.card a.btn {
+    background-color: #43B05C;
+    border-color: #43B05C;
+}

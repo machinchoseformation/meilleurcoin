@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}LeMeilleurCoin{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="icon" href="{{ asset('img/logo.png') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="row">
+                <div class="col-lg-6">
+                    <a class="" href="{{ path('home') }}" title="Retour à l'accueil">
+                        <h1 class="display-4"><img src="{{ asset('img/logo.png') }}" alt="Logo" class="main-logo">LeMeilleurCoin</h1>
+                    </a>
+                    <p class="lead">Ça va vous en boucher udddddn.</p>
+                </div>
+
+
+                <form action="{{ path('home') }}" class="form-inline col-lg-6">
+                    <div class="form-group row">
+                        {# appelle le contrôleur pour inclure ici même
+                         la liste de toutes les catégories #}
+                        {{ render(controller(
+                            'App\\Controller\\DefaultController::listAll'
+                        )) }}
+
+                        <input class="form-control form-control-sm mr-2 ml-2" type="search" name="q" value="{{ app.request.get('q') }}" placeholder="mots-clefs..">
+                        <button class="btn btn-sm btn-default" type="submit">GO</button>
+                    </div>
+                </form>
+            </div>
+            <nav>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item"><a class="nav-link" href="{{ path('home') }}" title="Accueil">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('ad_create') }}" title="Déposer une annonce">Déposer une annonce</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('faq') }}" title="FAQ">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('cgu') }}" title="CGU">CGU</a></li>
+                    {% if app.user %}
+                        <li class="nav-item"><a class="nav-link" href="{{ path('user_publications') }}" title="Mes publications">Mes publications</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('favorite_list') }}" title="Mes favoris">Mes favoris</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('logout') }}" title="Déconnexion">Déconnexion</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{{ path('login') }}" title="Connexion">Connexion</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('register') }}" title="Inscription">Inscription</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+
+        {# voir https://symfony.com/doc/3.4/controller.html#flash-messages #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+        <footer>
+            &copy; 2018 LeMeilleurCoin
+            <a href="{{ path('admin_list_category') }}">Back-office</a>
+        </footer>
+    </div>
+
+    <script src="{{ asset('js/app.js') }}"></script>
+    {% block js %}{% endblock %}
+</body>
+</html>
+
+
+
+
+
+
+
+
+

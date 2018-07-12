@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+
+    <h2>Ajouter une catégorie</h2>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-success" type="submit">Enregistrer</button>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block title %}{% endblock %}

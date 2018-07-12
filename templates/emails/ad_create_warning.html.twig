@@ -1,0 +1,8 @@
+{% extends 'emails/base.html.twig' %}
+
+{% block main %}
+    <h1>Nouvelle annonce !</h1>
+    <p>{{ ad.title }}</p>
+    <a href="{{ url('ad_detail', {'id': ad.id}) }}">Cliquez ici pour voir l'annonce</a>
+{% endblock %}
+

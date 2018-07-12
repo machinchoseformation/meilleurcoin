@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <h2>CGU</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi corporis deleniti eaque molestias natus nobis officia quae repellendus sed totam? Dolores facilis fugit inventore neque qui quod quos repellat saepe.loremLorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio est vero voluptatum. Accusantium iste iure nemo quam saepe vero, voluptatem! Adipisci consequuntur dolore, earum impedit ipsa iste laudantium natus ut?</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio est vero voluptatum. Accusantium iste iure nemo quam saepe vero, voluptatem! Adipisci consequuntur dolore, earum impedit ipsa iste laudantium natus ut?</p>
+    <h3>Bacon</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio est vero voluptatum. Accusantium iste iure nemo quam saepe vero, voluptatem! Adipisci consequuntur dolore, earum impedit ipsa iste laudantium natus ut?</p>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio est vero voluptatum. Accusantium iste iure nemo quam saepe vero, voluptatem! Adipisci consequuntur dolore, earum impedit ipsa iste laudantium natus ut?</p>
+{% endblock %}
+
+{# parent() réécrit le contenu du bloc qu'on surcharge #}
+{% block title %}CGU | {{ parent() }}{% endblock %}

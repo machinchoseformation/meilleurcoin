@@ -1,0 +1,6 @@
+<select name="cat" class="form-control form-control-sm">
+    <option value="">Toutes les catégories</option>
+{% for category in categories %}
+    <option {{ categoryId == category.id ? 'selected' : '' }} value="{{ category.id }}">{{ category.name }}</option>
+{% endfor %}
+</select>

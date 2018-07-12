@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+
+    <h2>{{ category.name }}</h2>
+    <a class="btn btn-danger" href="{{ path('admin_remove_category', {'id': category.id}) }}">Supprimer</a>
+    <a class="btn btn-warning" href="{{ path('admin_update_category', {'id': category.id}) }}">Modifier</a>
+    <a class="btn btn-primary" href="{{ path('admin_list_category') }}">Liste</a>
+
+{% endblock %}
+
+{% block title %}{% endblock %}

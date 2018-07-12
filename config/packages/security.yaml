@@ -1,0 +1,45 @@
+# config/packages
+security:
+
+    providers:
+        db:
+            entity:
+                class: App\Entity\User
+                property: username
+
+    firewalls:
+
+        main:
+            pattern: ^/
+            provider: db
+            anonymous: true
+            logout_on_user_change: true # pour supprimer le deprecated warning
+            form_login:
+                login_path: login
+                check_path: login
+            logout:
+                path: logout
+                target: home
+
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+            cost: 4 #pendant le dev seulement !
+
+    role_hierarchy:
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_ADMIN:  ROLE_USER
+
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/favoris, roles: ROLE_USER }
+        # - { path: ^/annonces/depot/$, roles: ROLE_USER }
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }

@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+
+{% block main %}
+    <h2>Créez votre compte !</h2>
+    {{ form_start(form, {'attr':{'novalidate': 'novalidate'}}) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-success">M'inscrire !</button>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block title %}Inscription | {{ parent() }}{% endblock %}
